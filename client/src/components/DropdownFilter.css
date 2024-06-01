@@ -1,0 +1,10 @@
+.custom-filter {
+    color: #fff;
+    border: #1a8754;
+    background-color: #1a8754;
+}
+
+.custom-filter:hover {
+    color: #fff;
+    background-color: #18a365;
+}

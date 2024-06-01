@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React from 'react';
+import TopBar from "./components/TopBar";
 import './App.css';
 
 function App() {
+  const options = ['Title',  'Genre', 'Director'];
+
+  const handleSearch = (query) => {
+    console.log('Search query: ', query);
+  };
+
+  const handleSelect = (selectedOption) => {
+    console.log('Selected option: ', selectedOption);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TopBar options={options} onSearch={handleSearch} onSelect={handleSelect} />
+      <div className="container mt-4">
+          <h1>Content Goes Here</h1>
+      </div>
     </div>
   );
 }
