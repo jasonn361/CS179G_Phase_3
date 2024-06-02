@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import './SearchBar.css';
 
 export default function SearchBar({ placeholder, onSearch }) {
     const [query, setQuery] = useState('');
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         setQuery(e.target.value);
@@ -11,6 +13,7 @@ export default function SearchBar({ placeholder, onSearch }) {
     const handleSearch = (e) => {
         e.preventDefault();
         onSearch(query);
+        navigate('/search');
     };
 
     return (
@@ -29,4 +32,3 @@ export default function SearchBar({ placeholder, onSearch }) {
         </form>
     );
 };
-
