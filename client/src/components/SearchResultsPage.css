@@ -1,0 +1,31 @@
+.search-results-page {
+    max-width: 600px;
+    margin: auto auto 300px auto;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .results .result-item {
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #212529;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+.load-more-button, .hide-button, .back-to-top-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.back-to-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}

@@ -1,0 +1,14 @@
+.form-control::placeholder {
+    color: #ccc;
+    opacity: 1;
+}
+
+.custom-search-button {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.custom-search-button:hover {
+    color: #fff;
+    background-color: #4398fd;
+}
