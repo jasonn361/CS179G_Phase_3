@@ -16,9 +16,9 @@ app.get('/fetch', (req, res) => {
     const { term } = req.query;
     const searchValue = `%${term}%`;
 
-    const query = `SELECT movie AS title FROM IMDb_Info WHERE movie LIKE ?
+    const query = `SELECT movie AS title FROM IMDb_Info WHERE movie LIKE ${searchValue}
                    UNION ALL
-                   SELECT title FROM RT_Movie_Info WHERE title LIKE ?`;
+                   SELECT title FROM RT_Movie_Info WHERE title LIKE ${searchValue}`;
 
     pool.query(query, [searchValue, searchValue], (err, results) => {
         if (err) {
