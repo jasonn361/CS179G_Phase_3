@@ -1,3 +1,15 @@
 .custom-topbar {
     padding: 10px 50px 10px 50px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white !important;
 }
