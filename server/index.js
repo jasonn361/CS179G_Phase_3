@@ -1,20 +1,44 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const pool = require("./db");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 const port = 3000;
 
 app.use(cors());
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
- 
-app.post("/post", (req, res) => {
-    console.log("Connected to React");
-    res.redirect("/");
+
+// Define API routes before the static file serving
+app.get('/fetch', (req, res) => {
+    const { term } = req.query;
+    const searchValue = `%${term}%`;
+
+    const query = `SELECT movie AS title FROM IMDb_Info WHERE movie LIKE ?
+                   UNION ALL
+                   SELECT title FROM RT_Movie_Info WHERE title LIKE ?`;
+
+    pool.query(query, [searchValue, searchValue], (err, results) => {
+        if (err) {
+            console.error('Error executing search query:', err);
+            res.status(500).json({ error: 'Internal server error' });
+            return;
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.json(results);  // Return results directly as JSON
+    });
 });
- 
-// const PORT = process.env.PORT || 8080;
- 
-app.listen(port, console.log(`Server started on port ${port}`));
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './SearchBar.css';
 
 export default function SearchBar({ placeholder, onSearch }) {
@@ -31,4 +31,4 @@ export default function SearchBar({ placeholder, onSearch }) {
             </button>
         </form>
     );
-};
+}

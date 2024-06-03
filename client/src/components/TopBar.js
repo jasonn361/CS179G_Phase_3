@@ -1,31 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import SearchBar from './SearchBar';
-import DropdownFilter from './DropdownFilter';
+// import DropdownFilter from './DropdownFilter';
 import "./TopBar.css";
 
-export default function NavbarContainer({ options, onSearch, onSelect }) {
+export default function TopBar({ /*options,*/ onSearch/*, onSelect, currentFilter*/ }) {
     return (
         <nav className="custom-topbar navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
-                <a className="navbar-brand fw-bold" href="#">Movie Ratings Analysis</a>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <div className="d-flex align-items-center">
-                        <div className="me-2">
-                            <SearchBar placeholder="Search..." onSearch={onSearch} />
-                        </div>
-                        <DropdownFilter options={options} onSelect={onSelect} />
-                    </div>
+                <Link to="/" className="navbar-brand fw-bold">Movie Ratings Analysis</Link>
+                <div className="d-flex align-items-center">
+                    <SearchBar placeholder="Search..." onSearch={onSearch} /*currentFilter={currentFilter}*/ />
+                    {/*<DropdownFilter options={options} onSelect={onSelect} />*/}
                 </div>
             </div>
         </nav>
